@@ -1,7 +1,7 @@
 package Entity;
 
 import java.io.Serializable;
-import java.lang.invoke.StringConcatFactory;
+import java.util.Objects;
 
 public class Employee implements Serializable {
     //Fields
@@ -43,6 +43,10 @@ public class Employee implements Serializable {
     @Override
     public String toString() {
         return "ID= " + id;
+    }
+
+    public boolean checkMatch(Employee e1, Employee e2) {
+        return e1.getPassword().equals(e2.getPassword()) && e1.getUsername().equals(e2.getUsername());
     }
 
 }
