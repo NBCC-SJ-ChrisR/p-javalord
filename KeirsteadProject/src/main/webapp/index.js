@@ -20,7 +20,6 @@ window.onload = function() {
 
             if (response.ok) {
                 let data = await response.json();
-                console.log(data);
                 if (data.valid) {
                     document.querySelector("#loginForm").submit();
                 }

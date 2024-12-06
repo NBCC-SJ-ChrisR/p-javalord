@@ -37,7 +37,11 @@ public class EmployeeService extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EmployeeDAO dao = getDAO(request);
-
+        HttpSession session = request.getSession();
+        //Clears session data is username already exists
+        if (session.getAttribute("username") != null) {
+            session.invalidate();
+        }
         try (PrintWriter out = response.getWriter()) {
             Scanner scanner = new Scanner(request.getReader());
             String jsonData = scanner.nextLine();
@@ -48,6 +52,7 @@ public class EmployeeService extends HttpServlet {
             if (e.checkMatch(e, e2)) {
                 System.out.println("IN USER1: " + e.getUsername() + "IN PASS: " + e.getPassword());
                 System.out.println("DB USER: " + e2.getUsername() + "DB PASS: " + e2.getPassword());
+                session.setAttribute("username", e2.getId());
                 Map<String, Object> data = new HashMap<>();
                 data.put("valid", true);
                 out.println(gson.toJson(data));

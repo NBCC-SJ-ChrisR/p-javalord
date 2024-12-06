@@ -4,8 +4,58 @@
     <meta charset="UTF-8">
     <title>Employee</title>
     <script src="employee.js"></script>
+    <link rel="stylesheet" href="employee.css">
 </head>
 <body>
 
+<div class="container">
+    <div class="header">
+        <h1>Administration Area</h1>
+        <button id="logoutButton" class="logoutButton">Logout</button>
+    </div>
+
+    <!-- Toppings -->
+    <div class="section">
+        <h2>Manage Toppings</h2>
+        <form id="toppingForm">
+            <div class="formGroup">
+                <label for="topName">Topping Name</label>
+                <input type="text" id="topName" name="topName" placeholder="Enter topping name">
+                <label for="topPrice">Topping Price</label>
+                <input type="number" id="topPrice" name="topPrice" min="0.1" value="1">
+            </div>
+            <div class="buttons">
+                <button id="addButton" type="button" class="button">Add Topping</button>
+                <button id="deleteButton" type="button" class="button secondaryButton" disabled>Delete Topping</button>
+            </div>
+        </form>
+        <div class="table">
+            <table id="toppingsTable">
+            </table>
+        </div>
+    </div>
+
+    <!-- Orders -->
+    <div class="section">
+        <h2>Manage Orders</h2>
+        <form id="orderForm">
+            <div class="formGroup">
+                <label for="orderStatus">View Orders By Status</label>
+                <select id="orderStatus" name="orderStatus">
+                    <option value="pending">Pending</option>
+                    <option value="filled">Filled</option>
+                </select>
+            </div>
+            <div class="buttons">
+                <button id="viewOrdersButton" type="button" class="button">View Orders</button>
+                <button id="changeButton" type="button" class="button secondaryButton" disabled>Change Status Filled</button>
+            </div>
+        </form>
+        <div class="table">
+            <table id="ordersTable">
+            </table>
+        </div>
+    </div>
+</div>
 </body>
 </html>
