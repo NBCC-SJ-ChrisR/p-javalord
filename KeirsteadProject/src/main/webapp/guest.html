@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Pizza</title>
+  <link rel="stylesheet" href="guest.css">
+  <script src="guest.js"></script>
+</head>
+<body>
+
+  <div class="home">
+    <button id="home" class="homeButton">Sign In</button>
+  </div>
+
+  <div id="orderContainer" class="container">
+    <header class="header">
+      <h1>🍕 Customize Your Pizza 🍕</h1>
+      <p>Build your favourite za!</p>
+    </header>
+    <main class="mainContent">
+        <!-- Pizza Size -->
+        <div class="formGroup">
+          <label for="size">Choose Size:</label>
+          <select id="size" name="size" required>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </select>
+        </div>
+        <!-- Crust Type -->
+        <div class="formGroup">
+          <label for="crust">Choose Crust:</label>
+          <select id="crust" name="crust" required>
+          </select>
+        </div>
+        <!-- Toppings -->
+        <div class="formGroup">
+          <label for="toppings">Choose Toppings (CTRL To Select Multiple):</label>
+          <select id="toppings" name="toppings[]" multiple size="5">
+          </select>
+        </div>
+        <!-- Submit Button -->
+        <div class="formGroup">
+          <button id="placeOrderButton" class="submitButton">Place Order</button>
+        </div>
+    </main>
+  </div>
+
+  <!-- !!! -->
+  <!-- Order Summary -->
+  <div id="orderSummary" class="container hidden">
+    <h2>Confirm Your Order</h2>
+    <!-- Pizza Size -->
+    <div class="formGroup">
+      <label for="sizeConfirm">Size:</label>
+      <input type="text" id="sizeConfirm" disabled>
+    </div>
+    <!-- Crust Type -->
+    <div class="formGroup">
+      <label for="crustConfirm">Crust:</label>
+      <input type="text" id="crustConfirm" disabled>
+    </div>
+    <!-- Toppings -->
+    <div class="formGroup">
+      <label for="toppingsConfirm">Toppings:</label>
+      <select id="toppingsConfirm" size="5" disabled>
+      </select>
+    </div>
+    <!-- Submit Button -->
+    <div class="formGroup">
+      <button id="confirmOrderButton" class="submitButton">Confirm Order</button>
+      <button id="changeOrderButton">Change Order</button>
+    </div>
+  </div>
+</body>
+</html>

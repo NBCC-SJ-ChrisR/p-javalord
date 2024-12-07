@@ -1,4 +1,5 @@
 window.onload = function() {
+    document.querySelector("#guestBtn").addEventListener("click", function() {window.location.href = "guest.html";})
     //Prevents form submission and checks creds before going to next page
     document.querySelector("#loginForm").addEventListener("submit", async function(event) {
         event.preventDefault();
