@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Pizza</title>
+  <link rel="stylesheet" href="guest.css">
+  <script src="guest.js"></script>
+</head>
+<body>
+
+  <div class="home">
+    <button id="home" class="homeButton">Sign In</button>
+  </div>
+
+  <div id="orderContainer" class="container">
+    <header class="header">
+      <h1>🍕 Customize Your Pizza 🍕</h1>
+      <p>Build your favourite za!</p>
+    </header>
+    <main class="mainContent">
+        <!-- Pizza Size -->
+        <div class="formGroup">
+          <label for="size">Choose Size:</label>
+          <select id="size" name="size" required>
+          </select>
+        </div>
+        <!-- Crust Type -->
+        <div class="formGroup">
+          <label for="crust">Choose Crust:</label>
+          <select id="crust" name="crust" required>
+          </select>
+        </div>
+        <!-- Toppings -->
+        <div class="formGroup">
+          <label for="toppings">Choose Toppings (CTRL To Select Multiple):</label>
+          <select id="toppings" name="toppings[]" multiple size="5">
+          </select>
+        </div>
+      <!-- Quantity -->
+      <div class="formGroup">
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="1" max="5" required value="1">
+      </div>
+        <!-- Submit Button -->
+        <div class="formGroup">
+          <button id="addButton" class="submitButton">Add Pizza(s)</button>
+          <button id="placeOrderButton">Go To Cart</button>
+        </div>
+    </main>
+  </div>
+
+  <!-- !!! -->
+  <!-- Order Summary -->
+  <div id="orderSummary" class="container hidden">
+    <h2>Confirm Your Order</h2>
+    <!-- Pizza Container -->
+    <div class="pizzaGroup">
+      <div id="pizzaContainer" class="scrollableContainer">
+
+      </div>
+    </div>
+    <!-- Total -->
+    <div class="totalGroup">
+      <label for="subTotal">Sub Total:</label>
+      <input type="text" id="subTotal" name="subTotal" disabled>
+      <label for="grandTotal">Grand Total:</label>
+      <input type="text" id="grandTotal" name="grandTotal" disabled>
+    </div>
+    <!-- Pick up Choices -->
+    <div class="radGroup">
+      <div>
+        <input type="radio" id="pickup" name="orderType" value="Pickup" checked>
+        <label for="pickup">Pickup</label>
+      </div>
+      <div>
+        <input type="radio" id="delivery" name="orderType" value="Delivery">
+        <label for="delivery">Delivery</label>
+      </div>
+      <div class="prepTimeGroup">
+        <label for="prepTime">Estimated Time: </label>
+        <input type="text" id="prepTime" disabled>
+      </div>
+    </div>
+    <!-- Pickup Info -->
+    <div class="timeGroup">
+      <label for="asap">ASAP:</label>
+      <input type="checkbox" id="asap" checked>
+      <label for="timeInput">Select a time:</label>
+      <input type="time" id="timeInput" name="timeInput" disabled>
+    </div>
+    <!-- Submit Button -->
+    <div class="formGroup">
+      <button id="confirmOrderButton" class="submitButton">Confirm Order</button>
+      <button id="changeOrderButton">Add Another Za</button>
+    </div>
+  </div>
+
+  <!-- !!! -->
+  <!-- Customer Info -->
+  <div id="customerInfo" class="container hidden">
+    <h2>Provide Your Details</h2>
+    <!-- First Name -->
+    <div class="formGroup">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName" required placeholder="John" maxlength="20">
+    </div>
+    <!-- Last Name -->
+    <div class="formGroup">
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName" required placeholder="Doe" maxlength="20">
+    </div>
+    <!-- Phone Number -->
+    <div class="formGroup">
+      <label for="phoneNumber">Phone Number:</label>
+      <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="5066098473" pattern="[0-9]{10}" required>
+    </div>
+    <!-- Email -->
+    <div class="formGroup">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required placeholder="johndoe@gmail.com" maxlength="20">
+    </div>
+    <!-- House Number -->
+    <div class="formGroup">
+      <label for="houseNumber">House Number:</label>
+      <input type="text" id="houseNumber" name="houseNumber" required placeholder="1234">
+    </div>
+    <!-- Street -->
+    <div class="formGroup">
+      <label for="street">Street:</label>
+      <input type="text" id="street" name="street" required placeholder="Main Street" maxlength="20">
+    </div>
+    <!-- Province -->
+    <div class="formGroup">
+      <label for="province">Province:</label>
+      <select id="province" name="province" required>
+        <option value="">Select Province</option>
+        <option value="AB">Alberta</option>
+        <option value="BC">British Columbia</option>
+        <option value="MB">Manitoba</option>
+        <option value="NB">New Brunswick</option>
+        <option value="NL">Newfoundland and Labrador</option>
+        <option value="NS">Nova Scotia</option>
+        <option value="ON">Ontario</option>
+        <option value="PE">Prince Edward Island</option>
+        <option value="QC">Quebec</option>
+        <option value="SK">Saskatchewan</option>
+        <option value="NT">Northwest Territories</option>
+        <option value="NU">Nunavut</option>
+        <option value="YT">Yukon</option>
+      </select>
+    </div>
+    <!-- Postal Code -->
+    <div class="formGroup">
+      <label for="postalCode">Postal Code:</label>
+      <input type="text" id="postalCode" name="postalCode" pattern="[A-Z][0-9][A-Z][0-9][A-Z][0-9]" placeholder="A1A1A1" required>
+    </div>
+    <!-- Payment Choices -->
+    <div class="radGroup">
+      <div>
+        <input type="radio" id="payNow" name="payment" value="payNow" checked>
+        <label for="payNow">Pay Now</label>
+      </div>
+      <div>
+        <input type="radio" id="payLater" name="payment" value="payLater">
+        <label for="payLater">Pay Later</label>
+      </div>
+    </div>
+    <!-- Total -->
+    <div class="totalGroup">
+      <label for="subTotalInfo">Sub Total:</label>
+      <input type="text" id="subTotalInfo" name="subTotal" disabled>
+      <label for="grandTotalInfo">Grand Total:</label>
+      <input type="text" id="grandTotalInfo" name="grandTotal" disabled>
+    </div>
+    <!-- Button Group -->
+    <div class="formGroup">
+      <button id="confirmButton" class="submitButton">Place Order</button>
+      <button id="goBackToCart" class="goBackButton">Go Back</button>
+    </div>
+  </div>
+
+</body>
+</html>
