@@ -9,14 +9,14 @@ public class Customer implements Serializable {
     private String lastName;
     private String phone;
     private String email;
-    private String houseNumber;
+    private int houseNumber;
     private String street;
     private String province;
     private String postalCode;
 
     // Constructors
     public Customer(int id, String firstName, String lastName, String phone, String email,
-                     String houseNumber, String street, String province, String postalCode) {
+                     int houseNumber, String street, String province, String postalCode) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -65,10 +65,10 @@ public class Customer implements Serializable {
         this.email = email;
     }
 
-    public String getHouseNumber() {
+    public int getHouseNumber() {
         return houseNumber;
     }
-    public void setHouseNumber(String houseNumber) {
+    public void setHouseNumber(int houseNumber) {
         this.houseNumber = houseNumber;
     }
 
