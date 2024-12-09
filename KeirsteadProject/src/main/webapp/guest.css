@@ -1,0 +1,220 @@
+.hidden {
+    display: none; !important;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    background: linear-gradient(135deg, #ff9966, #ff5e62);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    margin: 0;
+}
+
+/* Container styling */
+.container {
+    width: 90%;
+    max-width: 700px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Header styling */
+.header {
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 1rem;
+    font-style: italic;
+}
+
+/* Form styling */
+.orderForm {
+    margin-bottom: 20px;
+}
+
+.formGroup {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.formGroup label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.formGroup select,
+.formGroup input {
+    width: 80%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.formGroup input:focus,
+.formGroup select:focus {
+    outline: none;
+    border-color: #ff9966;
+    box-shadow: 0 0 5px rgba(255, 153, 102, 0.5);
+}
+
+/* Buttons styling */
+.submitButton {
+    display: inline-block;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #ffcc33;
+    color: black;
+    text-decoration: none;
+    border: none;
+    box-shadow: 0 5px 15px rgba(255, 204, 51, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.submitButton:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Sign out Button */
+.homeButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: dodgerblue;
+    border: none;
+    cursor: pointer;
+}
+
+.homeButton:hover {
+    transform: scale(1.1);
+}
+
+#changeOrderButton, #placeOrderButton, .goBackButton {
+    margin-left: 15px;
+    display: inline-block;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #ff3333;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    box-shadow: 0 5px 15px #ff3333;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+#changeOrderButton:hover, #placeOrderButton:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px #ff3333;
+}
+
+#quantity {
+    width: 10%;
+}
+
+#subTotal, #grandTotal {
+    width: 15%;
+}
+
+.totalGroup label:not(:first-child) {
+    margin-left: 30px;
+}
+
+.totalGroup input {
+    margin-left: 10px;
+}
+
+.radGroup, .totalGroup, .timeGroup {
+    display: flex;
+    margin: 10px 0 20px 0;
+}
+
+.radGroup div:nth-child(2) {
+    margin-left: 40px;
+}
+
+/* Pizza Conatiner Summary Page */
+.scrollableContainer {
+    width: 80%;
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.pizzaDiv {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    position: relative;
+    color: black; !important;
+}
+
+.removeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff6b6b;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.removeButton:hover {
+    background-color: #ff4c4c;
+}
+
+.pizzaGroup {
+    display: flex;
+    justify-content: center;
+}
+
+.timeGroup input:not(:first-child),.timeGroup label:not(:first-child) {
+    margin-left: 10px;
+}
+
+.prepTimeGroup input {
+    width: 100px;
+    margin-left: 10px;
+}
+.prepTimeGroup label {
+    margin-left: 40px;
+}
+
+/* Detail Form */
+
+#customerInfo div.formGroup input {
+    width: 40%;
+}
+
+#province {
+    width: 40%;
+}

@@ -1,19 +1,18 @@
 package DataAccess;
 
-import java.sql.Connection;
-import java.sql.Statement;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import Entity.Employee;
-import DataAccess.Crypt;
+import Entity.PizzaCrust;
 import Entity.Toppings;
 
-public class EmployeeDAO {
+public class PizzaCrustDAO {
     private Connection conn = null;
-    private PreparedStatement selectStatement = null;
+    private PreparedStatement selectAllStatement = null;
+    private PreparedStatement insertStatement = null;
+    private PreparedStatement updateStatement = null;
+    private PreparedStatement deleteStatement = null;
     private String lastError = "";
 
     public String getLastError() { return lastError; }
@@ -25,7 +24,9 @@ public class EmployeeDAO {
         conn = ConnectionManager.getConnection(ConnectionParameters.URL, ConnectionParameters.USERNAME, ConnectionParameters.PASSWORD);
         if (conn != null)
             try {
-                selectStatement = conn.prepareStatement("SELECT * FROM employee WHERE username = ?");
+                selectAllStatement = conn.prepareStatement("SELECT * FROM pizzacrust");
+                //deleteStatement = conn.prepareStatement("DELETE FROM pizzatopping WHERE pizzaTopping_id = ?");
+                //insertStatement = conn.prepareStatement("INSERT INTO pizzatopping (name, price, createdate, empAddedBy, isActive) VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
                 return true;
             } catch (SQLException ex) {
                 lastError = "Init:" + ex.getMessage();
@@ -39,48 +40,44 @@ public class EmployeeDAO {
         return false;
     }
 
-    //Sent: String of username
-    //Returned: Employee Object with hashed password
-    //Desc: Receives username, then queries the database with username, if one matches it hashes the password and
-    //      creates an employee object to return.
-    public Employee get(String usernameIn) {
+    //Get ALL
+    public List<PizzaCrust> getAll() {
         lastError = "";
-        Employee employee = null;
-
+        List<PizzaCrust> list = new ArrayList();
         if (!init()) {
-            return null;
+            return list;
         }
 
         ResultSet rs;
         try {
-            selectStatement.setString(1, usernameIn);
-            rs = selectStatement.executeQuery();
+            rs = selectAllStatement.executeQuery();
         } catch (SQLException ex) {
             lastError = "Init:" + ex.getMessage();
             System.err.println("************************");
-            System.err.println("** Error retreiving Employee");
+            System.err.println("** Error retreiving Crusts from DB");
             System.err.println("** " + ex.getMessage());
             System.err.println("************************");
-            return null;
+            return list;
         }
 
         try {
             while (rs.next()) {
-                int id = rs.getInt("employee_id");
-                String username = rs.getString("username");
-                String hashedPassword = rs.getString("password");
-                employee = new Employee(id, username, hashedPassword);
+                int id = rs.getInt("pizzaCrust_id");
+                String name = rs.getString("name");
+                double price = rs.getDouble("price");
+                list.add(new PizzaCrust(id, name, price));
             }
-            System.err.println("*** get - found employee" + "USER:" + employee.getUsername() + employee.getPassword());
+            System.err.println("*** getAll() - found " + list.size() + " crusts");
 
         } catch (SQLException ex) {
             lastError = "Init:" + ex.getMessage();
             System.err.println("************************");
-            System.err.println("** Error populating Employees");
+            System.err.println("** Error populating Crust");
             System.err.println("** " + ex.getMessage());
             System.err.println("************************");
         }
-        return employee;
+        return list;
     }
+
 
 }

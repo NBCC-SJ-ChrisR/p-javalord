@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Tony's Pizza</title>
     <link rel="stylesheet" href="indexStyle.css">
+    <script src="index.js"></script>
 </head>
 <body>
 <div class="container">
@@ -12,7 +13,7 @@
         <p>Making it the Italian way for over 4 decades.</p>
     </header>
     <main class="mainContent">
-        <form class="loginForm">
+        <form id="loginForm" class="loginForm" action="employee.html" method="POST">
             <div class="formGroup">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username" required>
